@@ -178,7 +178,3 @@ JiraTrellofy = (options = {}) => {
     })
 
 }
-
-console.log("ACHOU O SCRIPT")
-console.log(JiraTrellofy)
-
