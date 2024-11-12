@@ -1,4 +1,4 @@
-export default function JiraTrellofy(options = {}) {
+JiraTrellofy = (options = {}) => {
     /**
      * Limite de células/colunas que um card pode ter para iniciar a compactação.
      */
@@ -178,3 +178,8 @@ export default function JiraTrellofy(options = {}) {
     })
 
 }
+
+console.log("ACHOU O SCRIPT")
+console.log(JiraTrellofy)
+
+export default JiraTrellofy
