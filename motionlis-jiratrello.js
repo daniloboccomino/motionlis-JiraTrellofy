@@ -1,5 +1,3 @@
-console.log("COMEÇO")
-
 JiraTrellofy = (options = {}) => {
     /**
      * Limite de células/colunas que um card pode ter para iniciar a compactação.
