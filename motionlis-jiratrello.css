@@ -51,7 +51,7 @@
 	top: 41px;
 	
 	& #dashboard-content {
-    	height: calc(100vh - 41px);
+    	height: calc(100vh - 41px) !important;
     	min-height: auto;
     	rotate: 90deg;
     	transform-origin: top left;
@@ -117,9 +117,9 @@
 /* Fim da ordenação */
 
 .gadget {
-	box-shadow: 0px 6px 12px -4px #0002;
-	min-width: 350px;
-	position: initial;
+    box-shadow: 0px 6px 12px -4px #0002;
+    min-width: 350px;
+    position: initial;
     width: min-content !important;
 }
 
