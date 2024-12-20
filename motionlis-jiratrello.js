@@ -22,7 +22,7 @@ JiraTrellofy = (options = {}) => {
      * Substitui o nome completo do usuário pelo seu nickname customizado.
      */
     const replaceNickname = (link) => {
-        const nickname = options.assigneeNicks?.[link.innerHTML.trim()]
+        const nickname = options.assigneeNicks?.[Object.keys(options.assigneeNicks).filter(key => link.innerHTML.trim().startsWith(key))]
         if (!nickname) return
         link.innerHTML = nickname
     }
@@ -88,6 +88,30 @@ JiraTrellofy = (options = {}) => {
         }
         cellN3.setAttribute('colspan', colspan)
     }
+    
+    /**
+     * Adiciona icones para labels especificas
+     */
+    const addLabelIcon = (row, labels) => {
+        labels.querySelectorAll('ul.labels li').forEach(label => {
+            let labelText = label.innerText.trim()
+            let icon = options.labelIcon?.[labelText]
+            if (icon) {
+                const link = label.querySelector('a')
+                link.classList.add('label-'+labelText)
+                link.innerHTML = icon.svg
+                link.style = 'background: ' + icon.cor
+            }
+        })
+    }
+    
+    const removeProjectName = (gerritlinks) => {
+        let p = gerritlinks.querySelector('p')
+        if (p) {
+            let br = p.querySelectorAll('br')
+            if (br.length) br.forEach(br => br.remove())
+        }
+    }
 
     /**
      * Hook chamado antes de realizar a compactação das linhas da tabela de cada painel.
@@ -102,6 +126,16 @@ JiraTrellofy = (options = {}) => {
      */
     const postCompactRow = (row, subRow) => {
         removeOthersUsersWhenN3(subRow)
+        
+        let labels = subRow.querySelector('td.labels')
+        if (labels) {
+            addLabelIcon(row, labels)
+        }
+        
+        let gerritlinks = subRow.querySelector(`.${CSS.GERRIT_COMMITS}`)
+        if (gerritlinks) {
+            removeProjectName(gerritlinks)
+        }
     }
 
     /**
@@ -170,11 +204,11 @@ JiraTrellofy = (options = {}) => {
                 window.clearTimeout(jira.timeoutRunner)
                 // timeout com override para não ficar disparando toda hora
                 // quando multiplos elementos estão sendo carregados na DOM
-                    jira.timeoutRunner = setTimeout(() => run(), 100)
+                jira.timeoutRunner = setTimeout(() => run(), 100)
             }
         )
         // verifica se algum elemento é inserido no corpo da div principal do Jira
         observer.observe(jira, { attributes: false, childList: true, subtree: true });
     })
-
+    
 }
