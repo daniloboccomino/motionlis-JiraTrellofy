@@ -80,6 +80,42 @@
 #gadget-69873-renderbox { order: 11; }
 /* Fim da ordenação */
 
+/* Ordenação específica para os paineis do Dashboard MOTAUTO-24 e MOTAUTO-24-REMOTE */
+#gadget-71396-renderbox,
+#gadget-71407-renderbox
+{ order: 1; }
+#gadget-71393-renderbox,
+#gadget-71404-renderbox
+{ order: 2; }
+#gadget-71394-renderbox,
+#gadget-71405-renderbox
+{ order: 3; }
+#gadget-71392-renderbox,
+#gadget-71403-renderbox
+{ order: 4; }
+#gadget-71397-renderbox,
+#gadget-71408-renderbox
+{ order: 5; }
+#gadget-71401-renderbox,
+#gadget-71412-renderbox
+{ order: 6; }
+#gadget-71395-renderbox,
+#gadget-71406-renderbox
+{ order: 7; }
+#gadget-71402-renderbox,
+#gadget-71413-renderbox
+{ order: 8; }
+#gadget-71398-renderbox,
+#gadget-71409-renderbox
+{ order: 9; }
+#gadget-71400-renderbox,
+#gadget-71411-renderbox
+{ order: 10; }
+#gadget-71399-renderbox,
+#gadget-71410-renderbox
+{ order: 11; }
+/* Fim da ordenação */
+
 .gadget {
 	box-shadow: 0px 6px 12px -4px #0002;
 	min-width: 350px;
@@ -187,20 +223,6 @@
     }
     
 }
-
-/* Ordenação específica para os paineis do Dashboard MOTAUTO-24 */
-#gadget-71396-renderbox { order: 1; }
-#gadget-71393-renderbox { order: 2; }
-#gadget-71394-renderbox { order: 3; }
-#gadget-71392-renderbox { order: 4; }
-#gadget-71397-renderbox { order: 5; }
-#gadget-71401-renderbox { order: 6; }
-#gadget-71395-renderbox { order: 7; }
-#gadget-71402-renderbox { order: 8; }
-#gadget-71398-renderbox { order: 9; }
-#gadget-71400-renderbox { order: 10; }
-#gadget-71399-renderbox { order: 11; }
-/* Fim da ordenação */
 
 .issue-table {
     & .compactRow {
