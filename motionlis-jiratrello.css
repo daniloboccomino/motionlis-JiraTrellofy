@@ -1,3 +1,292 @@
-#content, #dashboard {
-    background: lavender;
+#jira {
+	overflow: hidden;
+}
+
+#jira #announcement-banner,
+/* escondendo painel lateral de dashboards */
+#dashboard > .vertical.tabs,
+/* escondendo nome do dashboard */
+#dashboard-content > .aui-page-header,
+#dashboard-content > .layout,
+/* escondendo menu do painel */
+.gadget .gadget-menu,
+/* escondendo head das tabelas */
+.gadget .issue-table > thead 
+{
+	display: none;
+}
+
+#content {
+	background: #fff;
+	height: calc(100vh - 41px);
+	display: flex;
+	justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1)
+        ),
+        url(
+            /* url de uma imagem para o plano de fundo do dashboard */
+        );
+        
+    & * {
+    	box-sizing: border-box;
+    }
+}
+
+#dashboard {
+	border: none;
+	background: unset;
+	width: calc(100vh - 41px);
+	height: 100vw;
+	rotate: -90deg;
+	transform-origin: top;
+	transform: translate3d(-50%, -50%, 0);
+	overflow: auto;
+	overflow-x: hidden;
+	scrollbar-width: none;
+	position: fixed;
+	top: 41px;
+	
+	& #dashboard-content {
+    	height: calc(100vh - 41px);
+    	min-height: auto;
+    	rotate: 90deg;
+    	transform-origin: top left;
+    	transform: translate3d(0%, -100%, 0);
+    	display: flex;
+    	justify-content: flex-start;
+    	align-items: flex-start;
+    	gap: 12px;
+    	margin: auto;
+    	padding: 10px 20px 0;
+    	position: fixed;
+    }
+}
+
+/* Ordenação específica para os paineis do Dashboard Sprint - Motion LIS */
+#gadget-69912-renderbox { order: 1; }
+#gadget-69823-renderbox { order: 2; }
+#gadget-69929-renderbox { order: 3; }
+#gadget-69900-renderbox { order: 4; }
+#gadget-69824-renderbox { order: 5; }
+#gadget-69828-renderbox { order: 6; }
+#gadget-69826-renderbox { order: 7; }
+#gadget-69827-renderbox { order: 8; }
+#gadget-69825-renderbox { order: 9; }
+#gadget-69892-renderbox { order: 10; }
+#gadget-69873-renderbox { order: 11; }
+/* Fim da ordenação */
+
+.gadget {
+	box-shadow: 0px 6px 12px -4px #0002;
+	min-width: 350px;
+	position: initial;
+    width: min-content !important;
+}
+
+.dashboard-item-content {
+	max-height: calc(96vh - 100px);
+	overflow-y: auto;
+	scrollbar-width: none;
+	
+	& .count-pagination {
+        /* movendo o contador ao lado do titulo do painel */
+    	position: absolute;
+    	top: 6px;
+    	right: 6px;
+        
+        /* estilizando o contador */
+    	width: auto;
+    	font-size: 86%;
+    	background-color: #fff5;
+    	border-radius: 2px;
+    	padding: 1px 6px;
+    	display: flex;
+    	align-items: baseline;
+    	
+    	& a {
+        	color: white;
+        }
+        
+        & .pagination {
+            padding-left: 0;
+            
+            &:has(strong:is(:first-child)) {
+                position: relative;
+                left: 4px;
+            }
+	        
+            & > :is(a, span, strong) {
+            	font-size: 10px;
+            }
+            
+            & .icon:after {
+            	border-width: 4px;
+            }
+        }
+    }
+}
+
+.issue-table tbody {
+    & tr {
+	    font-size: 90%;
+	    
+	    &:nth-child(even) {
+            border-bottom: #ccc solid 1px;
+        }
+	    
+	    &:first-child td, td {
+	        border: unset;
+	    }
+    }
+    
+    & .issue_actions {
+    	padding: 0px 0px 0px 4px;
+    	
+    	& a {
+        	padding: 2px;
+        	margin: 0px;
+        }
+    }
+    
+    & .user-hover img {
+    	vertical-align: middle;
+    	margin-right: 2px;
+    }
+    
+    & :is(
+        .summary,
+        .assignee,
+        .customfield_14221 /* RESPONSAVEL_N3 */ 
+    ) {
+    	padding: 5px 0px;
+    }
+    
+    & .customfield_10054 /* ENVOLVIDOS */ {
+        & .shorten {
+            display: flex;
+            align-items: flex-end;
+            gap: 1px;
+            
+            & .tinylink {
+                margin-left: 2px;
+            }
+        }
+    }
+    
+    & :is(
+        .customfield_11920 /* GERRIT_COMMITS */ , 
+        .customfield_10200 /* DEADLINE */ , 
+        .status
+    ) {
+    	padding: 0;
+    	vertical-align: middle;
+    }
+    
+}
+
+/* Ordenação específica para os paineis do Dashboard MOTAUTO-24 */
+#gadget-71396-renderbox { order: 1; }
+#gadget-71393-renderbox { order: 2; }
+#gadget-71394-renderbox { order: 3; }
+#gadget-71392-renderbox { order: 4; }
+#gadget-71397-renderbox { order: 5; }
+#gadget-71401-renderbox { order: 6; }
+#gadget-71395-renderbox { order: 7; }
+#gadget-71402-renderbox { order: 8; }
+#gadget-71398-renderbox { order: 9; }
+#gadget-71400-renderbox { order: 10; }
+#gadget-71399-renderbox { order: 11; }
+/* Fim da ordenação */
+
+.issue-table {
+    & .compactRow {
+        &:is(.issuerow) {
+            display: grid;
+            grid-template-columns: minmax(max-content, 5fr) 11fr min-content;
+        }
+        
+        &:not(.issuerow) {
+            display: grid;
+            align-items: baseline;
+            gap: 5px;
+            grid-template-columns: max-content auto;
+            grid-auto-columns: min-content;
+            grid-auto-flow: column;
+            
+            &:has(td.labels:is(:first-child)) {
+                grid-template-columns: auto max-content;
+                
+                &:has(.timeoriginalestimate) {
+                    grid-template-columns: 2fr minmax(max-content, 1fr);
+                }
+            }
+        }
+    }
+    
+    &:has(.environment > p) .compactRow:not(.issuerow):has(td.labels:is(:first-child)) {
+        grid-template-columns: 10fr minmax(min-content, 4fr) minmax(min-content, 7fr);
+        text-wrap-style: balance;
+    }
+    
+    & .issuekey {
+        width: max-content;
+    }
+    
+    & tr :first-child:is(
+        .assignee,
+        .customfield_14221 /* RESPONSAVEL_N3 */
+    ) {
+        margin-left: 8px;
+    }
+    
+    /* RESPONSAVEL_N3 */
+    & .customfield_14221 + td.labels {
+        grid-column: 2;
+    }
+    
+    & .labels {
+        & ul.labels {
+            margin-bottom: 2px;
+            position: relative;
+            top: 5px;
+        
+            & li:has([class*="label-"]) {
+            vertical-align: text-bottom;
+            }
+            
+            & [class*="label-"] {
+                // background: khaki;
+                font-size: unset;
+            
+                & > svg {
+                    height: 20px;
+                }
+            }
+        }
+    }
+    
+    /* GERRIT_COMMITS */
+    & .customfield_11920 {
+        & p {
+            display: grid;
+            grid-template-columns: repeat(2, max-content);
+        }
+    }
+    
+    /* DEADLINE */
+    & .customfield_10200 {
+        justify-self: center;
+    }
+    
+    & .status {
+        min-width: 120px;
+    }
+}
+
+#footer {
+	display: none;
 }
