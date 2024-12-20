@@ -51,7 +51,7 @@
 	top: 41px;
 	
 	& #dashboard-content {
-    	height: calc(100vh - 41px) !important;
+    	height: calc(100vh - 41px);
     	min-height: auto;
     	rotate: 90deg;
     	transform-origin: top left;
@@ -60,7 +60,7 @@
     	justify-content: flex-start;
     	align-items: flex-start;
     	gap: 12px;
-    	margin: auto;
+    	margin: auto !important;
     	padding: 10px 20px 0;
     	position: fixed;
     }
