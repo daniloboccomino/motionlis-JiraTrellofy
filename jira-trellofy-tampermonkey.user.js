@@ -24,7 +24,7 @@
 
     
 
-    document.head.append(
+    document.head.prepend(
         Object.assign(document.createElement('style'), { innerText: css })
     )
 
