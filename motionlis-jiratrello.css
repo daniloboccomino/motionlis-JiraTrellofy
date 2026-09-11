@@ -1,5 +1,7 @@
+@import 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0';
+
 #jira {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 #jira #announcement-banner,
@@ -21,12 +23,9 @@
     display: flex;
     justify-content: center;
 
-    background: #fff;
+    background-color: #fff;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url(
-        /* url de uma imagem para o plano de fundo do dashboard */
-    );
 
     & * {
         box-sizing: border-box;
@@ -53,8 +52,8 @@
     	rotate: 90deg;
     	transform-origin: top left;
     	transform: translate3d(0%, -100%, 0);
-    	display: flex;
-    	justify-content: flex-start;
+    	display: grid;
+    	grid-auto-flow: column;
     	align-items: flex-start;
     	gap: 12px;
     	margin: auto !important;
@@ -62,20 +61,6 @@
     	position: fixed;
     }
 }
-
-/* Ordenação específica para os paineis do Dashboard Sprint - Motion LIS */
-#gadget-69912-renderbox { order: 1; }
-#gadget-69823-renderbox { order: 2; }
-#gadget-69929-renderbox { order: 3; }
-#gadget-69900-renderbox { order: 4; }
-#gadget-69824-renderbox { order: 5; }
-#gadget-69828-renderbox { order: 6; }
-#gadget-69826-renderbox { order: 7; }
-#gadget-69827-renderbox { order: 8; }
-#gadget-69825-renderbox { order: 9; }
-#gadget-69892-renderbox { order: 10; }
-#gadget-69873-renderbox { order: 11; }
-/* Fim da ordenação */
 
 .gadget {
     box-shadow: 0px 6px 12px -4px #0002;
@@ -90,190 +75,205 @@
 	scrollbar-width: none;
 
 	& .count-pagination {
-        /* movendo o contador ao lado do titulo do painel */
-    	position: absolute;
-    	top: 6px;
-    	right: 6px;
+		/* movendo o contador ao lado do titulo do painel */
+		position: absolute;
+		top: 6px;
+		right: 6px;
 
-        /* estilizando o contador */
-    	width: auto;
-    	font-size: 86%;
-    	background-color: #fff5;
-    	border-radius: 2px;
-    	padding: 1px 6px;
-    	display: flex;
-    	align-items: baseline;
+		/* estilizando o contador */
+		width: auto;
+		font-size: 86%;
+		background-color: #fff5;
+		border-radius: 2px;
+		padding: 1px 6px;
+		display: flex;
+		align-items: baseline;
 
-    	& a {
-        	color: white;
-        }
+		& a {
+			color: white;
+		}
 
-        & .pagination {
-            padding-left: 0;
+		& .pagination {
+			padding-left: 0;
 
-            &:has(strong:is(:first-child)) {
-                position: relative;
-                left: 4px;
-            }
+			&:has(strong:is(:first-child)) {
+				position: relative;
+				left: 4px;
+			}
 
-            & > :is(a, span, strong) {
-            	font-size: 10px;
-            }
+			& > :is(a, span, strong) {
+				font-size: 10px;
+			}
 
-            & .icon:after {
-            	border-width: 4px;
-            }
-        }
-    }
+			& .icon:after {
+				border-width: 4px;
+			}
+		}
+	}
 }
 
 .issue-table tbody {
-    & tr {
-	    font-size: 90%;
+	& tr {
+		font-size: 90%;
 
-	    &:nth-child(even) {
-            border-bottom: #ccc solid 1px;
-        }
+		&:nth-child(even) {
+			border-bottom: #ccc solid 1px;
+		}
 
-	    &:first-child td, td {
-	        border: unset;
-	    }
-    }
+		&:first-child td, td {
+			border: unset;
+		}
+	}
 
-    & .issue_actions {
-    	padding: 0px 0px 0px 4px;
+	& .issue_actions {
+		padding: 0px 0px 0px 4px;
 
-    	& a {
-        	padding: 2px;
-        	margin: 0px;
-        }
-    }
+		& a {
+			padding: 2px;
+			margin: 0px;
+		}
+	}
 
-    & .user-hover img {
-    	vertical-align: middle;
-    	margin-right: 2px;
-    }
+	& .user-hover img {
+		vertical-align: middle;
+		margin-right: 2px;
+	}
 
-    & :is(
+	& :is(
         .summary,
         .assignee,
         .customfield_14221 /* RESPONSAVEL_N3 */
+        .customfield_15221 /* RESPONSAVEL_N5 */
     ) {
-        padding: 5px 0px;
-    }
+		padding: 5px 0px;
+	}
 
-    & .customfield_10054 /* ENVOLVIDOS */ {
-        padding-inline: unset;
-        & .shorten {
-            display: flex;
-            align-items: flex-end;
-            gap: 1px;
+	& .customfield_10054 /* ENVOLVIDOS */ {
+		padding-inline: unset;
 
-            & .tinylink {
-                margin-left: 2px;
-            }
-        }
-    }
+		& .shorten {
+			display: flex;
+			align-items: flex-end;
+			gap: 1px;
 
-    & :is(
-        .customfield_11920 /* GERRIT_COMMITS */ ,
-        .customfield_10200 /* DEADLINE */ ,
-        .status
+			& .tinylink {
+				margin-left: 2px;
+			}
+		}
+	}
+
+	& :is(
+	    .customfield_11920 /* GERRIT_COMMITS */ ,
+	    .customfield_10200 /* DEADLINE */ ,
+	    .status
     ) {
-    	padding: 0;
-    	vertical-align: middle;
-    }
-
+		padding: 0;
+		vertical-align: middle;
+	}
 }
 
 .issue-table {
-    & .compactRow {
-        &:is(.issuerow) {
-            display: grid;
-            grid-template-columns: minmax(max-content, 3fr) 7fr min-content
-        }
+	& .compactRow {
+		&:is(.issuerow) {
+			display: grid;
+			grid-template-columns: minmax(max-content, 3fr) 7fr min-content;
+		}
 
-        &:not(.issuerow) {
-            display: grid;
-            align-items: baseline;
-            gap: 5px;
-            grid-template-columns: max-content auto;
-            grid-auto-columns: min-content;
-            grid-auto-flow: column;
+		&:not(.issuerow) {
+			display: grid;
+			align-items: baseline;
+			gap: 5px;
+			grid-template-columns: max-content auto;
+			grid-auto-columns: min-content;
+			grid-auto-flow: column;
 
-            &:has(td.labels:is(:first-child)) {
-                grid-template-columns: auto max-content;
+			&:has(td.labels:is(:first-child)) {
+				grid-template-columns: auto max-content;
 
-                &:has(.timeoriginalestimate) {
-                    grid-template-columns: 5fr minmax(max-content, 2fr);
-                }
-            }
-        }
+				&:has(.timeoriginalestimate) {
+					grid-template-columns: 5fr minmax(max-content, 2fr);
+				}
+			}
 
-        &.hide-shortchut {
-    	    display: none;
-    	}
-    }
-
-    &:has(.environment > p) .compactRow:not(.issuerow):has(td.labels:is(:first-child)) {
-        grid-template-columns: 14fr minmax(min-content, 5fr) minmax(min-content, 7fr);
-        text-wrap-style: balance;
-    }
-
-    & .issuekey {
-        width: max-content;
-    }
-
-    & tr :first-child:is(
-        .assignee,
-        .customfield_14221 /* RESPONSAVEL_N3 */
-    ) {
-        margin-left: 8px;
-        min-width: 80px;
-
-        &.min-width {
-            min-width: unset;
-        }
-    }
-
-    /* RESPONSAVEL_N3 */
-    & .customfield_14221 + td.labels {
-        grid-column: 2;
-    }
-
-    & .labels {
-        & ul.labels {
-            margin-bottom: 2px;
-            position: relative;
-            top: 5px;
-
-            & li:has([class*="label-"]) {
-            vertical-align: text-bottom;
+			& .assignee {
+                grid-column: 1;
             }
 
-            & [class*="label-"] {
-                font-size: unset;
-            }
+			& :is(
+        	    .assignee,
+        	    .customfield_14221 /* RESPONSAVEL_N3 */
+        	    .customfield_15221 /* RESPONSAVEL_N5 */
+            ):is(:first-child) {
+        		margin-left: 8px;
+        		min-width: 80px;
 
-            & .animate {
-                animation: animate .5s infinite;
-            }
-        }
-    }
+        		&.min-width {
+        			min-width: unset;
+        		}
+        	}
+		}
 
-    /* GERRIT_COMMITS */
-    & .customfield_11920 {
-        margin-left: 20px;
-    }
+		&.hide-shortchut {
+			display: none;
+		}
+	}
 
-    /* DEADLINE */
-    & .customfield_10200 {
-        justify-self: center;
-    }
+	&:has(.environment > p) .compactRow:not(.issuerow):has(td.labels:is(:first-child)) {
+		grid-template-columns: 14fr minmax(min-content, 5fr) minmax(min-content, 7fr);
+		text-wrap-style: balance;
+	}
 
-    & .status {
-        min-width: 120px;
-    }
+	& .issuekey {
+		width: max-content;
+	}
+
+	/* RESPONSAVEL_N3 */
+	& :is(
+	    .customfield_14221 /* RESPONSAVEL_N3 */
+	    .customfield_15221 /* RESPONSAVEL_N5 */
+	    .priority
+    ) + td.labels {
+		grid-column: 2;
+	}
+
+	& .labels {
+		& ul.labels {
+			margin-bottom: 2px;
+			position: relative;
+			top: 5px;
+
+			& li:has([class*="label-"]) {
+				vertical-align: text-bottom;
+			}
+
+			& [class*="label-"] {
+				font-size: unset;
+			}
+
+			& .animate {
+				animation: animate .6s ease-in-out infinite alternate;
+				transform: scale(1.1);
+			}
+		}
+	}
+
+	/* GERRIT_COMMITS */
+	& .customfield_11920 {
+		margin-left: 20px;
+	}
+
+	/* DEADLINE */
+	& .customfield_10200 {
+		justify-self: center;
+	}
+
+	& .status {
+		min-width: 120px;
+	}
+
+	& .priority {
+		width: auto;
+	}
 }
 
 #footer {
@@ -281,18 +281,26 @@
 }
 
 .material-symbols-rounded {
-    font-size: 20px;
-    overflow: hidden;
-    text-align: center;
-    transform: scaleX(1.05);
+	font-size: 20px;
+	overflow: hidden;
+	text-align: center;
+	transform: scaleX(1.05);
 }
 
 @keyframes animate {
-    50% {
-        background-color: color-mix(in srgb, white, rgba(255,255,255,.5));
-        box-shadow: 0 0 1px rgba(0,0,0,.1);
-        filter: brightness(1.1);
-        opacity: .9;
-        transform: scale(1.1);
-    }
+	50% {
+		background-color: color-mix(in srgb, white, rgba(255,255,255,.5));
+		box-shadow: 0 0 1px rgba(0,0,0,.1);
+		filter: brightness(1.1);
+		opacity: .9;
+		transform: scale(.9)
+	}
 }
+
+/* Ordenação específica para os paineis do Dashboard Sprint - Motion LIS */
+#gadget-69912-renderbox { order: -1; }
+#gadget-69900-renderbox { grid-column: 5; }
+#gadget-69825-renderbox { order: 1; }
+#gadget-69892-renderbox { order: 1; }
+#gadget-69873-renderbox { order: 1;}
+/* Fim da ordenação */
