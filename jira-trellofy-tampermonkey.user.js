@@ -30,7 +30,7 @@
             .trim()                             // Remove espaços nas pontas
     }
 
-    [...temp1.querySelectorAll('link[type="text/css"][rel="stylesheet"]')].at(-1).after(
+    [...document.head.querySelectorAll('link[type="text/css"][rel="stylesheet"]')].at(-1).after(
         Object.assign(document.createElement('style'), { innerText: cleanCSS(css) })
     )
 
