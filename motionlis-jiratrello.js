@@ -10,6 +10,7 @@ JiraTrellofy = (options = {}) => {
     const CSS = {
         GERRIT_COMMITS: 'customfield_11920',
         RESPONSAVEL_N3: 'customfield_14221',
+        RESPONSAVEL_N5: 'customfield_15221',
         ENVOLVIDOS: 'customfield_10054',
         ASSIGNEE: 'assignee',
         LINK_USER: 'user-hover',
@@ -45,6 +46,9 @@ JiraTrellofy = (options = {}) => {
         DEPENDENCIA: {
             icon: 'link',
         },
+        DESENVOLVIMENTO_PASTELARIA: {
+            icon: 'lunch_dining',
+        },
         PASTELARIA: {
             icon: 'lunch_dining',
         },
@@ -57,16 +61,29 @@ JiraTrellofy = (options = {}) => {
      * Substitui o nome completo do usuário pelo seu nickname customizado.
      * Caso a opção 'avatarOnly' estiver habilitada, sera exibido apenas o avatar tendo o nome do usuário omitido.
      */
-    const replaceNickname = (link) => {
+    const replaceNickname = (user) => {
         if ((options.withAvatar??true) && (options.avatarOnly??true)) {
-            link.closest('.tinylink')?.parentElement.classList.add('min-width')
-            return ''
+            user.closest('.tinylink')?.parentElement.classList.add('min-width')
+            user.innerText = ''
+            return
         }
+
         const nickname = options.assigneeNicks?.[
-            Object.keys(options.assigneeNicks).filter((key) => link.innerText.trim().startsWith(key))
+            Object.keys(options.assigneeNicks).filter((key) => user.innerText.trim().startsWith(key))
         ]
-        if (nickname) return nickname
-        else if (link.innerText.indexOf(' ') > 0) return link.innerText.substr(0, link.innerText.indexOf(' '))
+
+        if (nickname) {
+            user.innerText = nickname
+            return
+        }
+
+        let index
+        let spaceIndex = user.innerText.indexOf(' ')
+        if (spaceIndex > 0) index = spaceIndex
+        let hifenIndex = user.innerText.indexOf('-')
+        if (hifenIndex > 0 && hifenIndex < spaceIndex) index = hifenIndex
+
+        user.innerText = user.innerText.substr(0, index)
     }
 
     /**
@@ -89,7 +106,7 @@ JiraTrellofy = (options = {}) => {
         const linksUser = row.querySelectorAll(`a.${CSS.LINK_USER}`)
         if (linksUser.length === 0) return
         linksUser.forEach((link) => {
-            link.innerText = replaceNickname(link)
+            replaceNickname(link)
             if (options.withAvatar??true) putAvatar(link)
         })
     }
@@ -236,25 +253,19 @@ JiraTrellofy = (options = {}) => {
         gadgets.forEach((gadget) => reduceTitle(gadget))
     }
 
-    window.addEventListener('load', (event) => {
-        if (!options.disableLabelIcon) {
-            document.head.append(Object.assign(
-                document.createElement('link'),
-                { rel:"stylesheet", href:"https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0" }
-            ))
-        }
-        run()
-        const jira = document.getElementById('jira')
-        const observer = new MutationObserver((mutationList, observer) => {
-            window.clearTimeout(jira.timeoutRunner)
-            // timeout com override para não ficar disparando toda hora
-            // quando multiplos elementos estão sendo carregados na DOM
-            jira.timeoutRunner = setTimeout(() => run(), 100)
-        })
+    setTimeout(run, 1)
 
-        // verifica se algum elemento é inserido no corpo da div principal do Jira
-        observer.observe(jira, { attributes: false, childList: true, subtree: true })
-    })
+    setTimeout(() => {
+    	const jira = document.getElementById('jira')
+		const observer = new MutationObserver((mutationList, observer) => {
+		    window.clearTimeout(jira.timeoutRunner)
+		    // timeout com override para não ficar disparando toda hora
+		    // quando multiplos elementos estão sendo carregados na DOM
+		    jira.timeoutRunner = setTimeout(() => run(), 100)
+		})
+		// verifica se algum elemento é inserido no corpo da div principal do Jira
+	    observer.observe(jira, { attributes: false, childList: true, subtree: true })
+    }, 1)
 
     window.addEventListener('keypress', (event) => {
         if (event.key === 'q') {
