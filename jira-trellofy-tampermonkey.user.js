@@ -5,8 +5,8 @@
 // @description  Bootstrap que injeta o JiraTrellofy (js/css) a partir dos anexos da MOTAUTO-24
 // @match        https://jira.touchtec.com.br/secure/Dashboard.jspa?selectPageId=53772
 // @grant        none
-// @updateURL    https://github.com/daniloboccomino/motionlis-JiraTrellofy/blob/master/jira-trellofy-tampermonkey.user.js
-// @downloadURL  https://github.com/daniloboccomino/motionlis-JiraTrellofy/blob/master/jira-trellofy-tampermonkey.user.js
+// @updateURL    https://raw.githubusercontent.com/daniloboccomino/motionlis-JiraTrellofy/refs/heads/master/jira-trellofy-tampermonkey.user.js
+// @downloadURL  https://raw.githubusercontent.com/daniloboccomino/motionlis-JiraTrellofy/refs/heads/master/jira-trellofy-tampermonkey.user.js
 // ==/UserScript==
 
 (async () => {
