@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         JiraTrellofy Loader
 // @namespace    touchtec
-// @version      1.0.2
+// @version      1.0.3
 // @description  Bootstrap que injeta o JiraTrellofy (js/css) a partir dos anexos da MOTAUTO-24
 // @match        https://jira.touchtec.com.br/secure/Dashboard.jspa?selectPageId=53772
 // @grant        none
