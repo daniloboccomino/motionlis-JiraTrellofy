@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         JiraTrellofy Loader
 // @namespace    touchtec
-// @version      2.0.1
+// @version      2.0.2
 // @description  Bootstrap que injeta o JiraTrellofy (js/css) a partir dos anexos da MOTAUTO-24
 // @match        https://jira.touchtec.com.br/secure/Dashboard.jspa?selectPageId=53772
 // @grant        none
@@ -36,7 +36,7 @@
 
     document.body.append(Object.assign(document.createElement('script'), { text: js }))
 
-    console.log('RODOU v2.0.1')
+    console.log('RODOU v2.0.2')
 
     JiraTrellofy({
         /* Configurações personalizadas para alterar o comportamento padrão do JiraTrellofy() */
