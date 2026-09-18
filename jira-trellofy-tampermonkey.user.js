@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         JiraTrellofy Loader
 // @namespace    touchtec
-// @version      2.0.4
+// @version      2.1.0
 // @description  Bootstrap que injeta o JiraTrellofy (js/css) a partir dos anexos da MOTAUTO-24
 // @match        https://jira.touchtec.com.br/secure/Dashboard.jspa?selectPageId=53772
 // @grant        none
@@ -30,15 +30,11 @@
             .trim()                             // Remove espaços nas pontas
     }
 
-    [...document.head.querySelectorAll('link[type="text/css"][rel="stylesheet"]')].at(-1).after(
-        Object.assign(document.createElement('style'), { innerText: cleanCSS(css) })
-    )
-
+    const styles = Object.assign(document.createElement('style'), { innerText: cleanCSS(css) })
+    window.JiraTrellofyUserStyles ? window.JiraTrellofyUserStyles.before(styles) : document.head.append(styles)
     document.body.append(Object.assign(document.createElement('script'), { text: js }))
 
-    console.log('TESTE FINAL v2.0.4')
+    console.log('TESTE FINAL v2.1.0')
 
-    JiraTrellofy({
-        /* Configurações personalizadas para alterar o comportamento padrão do JiraTrellofy() */
-    })
+    JiraTrellofy(window.JiraTrellofyUserOptions ?? {})
 })()
